@@ -20,3 +20,17 @@ response  = requests.get(URL)
 data = response.text
 #print(data)
 
+soup = BeautifulSoup(response.content, "html.parser")
+#print(soup.prettify())
+price = soup.find(class_="a-offscreen").get_text()
+
+price_without_dollar = price.split("$")[1]
+
+price_as_float = float(price_without_dollar)
+#print(price_as_float)
+
+title = soup.find(id="productTitle").get_text().strip()
+#print(title)
+
+buy_price = 100
+
