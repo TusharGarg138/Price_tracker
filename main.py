@@ -34,3 +34,16 @@ title = soup.find(id="productTitle").get_text().strip()
 
 buy_price = 100
 
+# ====================== Send the email ===========================
+
+if price_as_float < buy_price:
+    message = f"{title} is on sale for {price}!"
+
+    with smtplib.SMTP(os.environ['SMTP_add'], port=587) as connection:
+        connection.starttls()
+        connection.login(os.environ["my_email"], os.environ["my_pass"])
+        connection.sendmail(
+           from_addr=os.environ["my_email"],
+            to_addrs=os.environ["my_email"],
+            msg=f"Subject: Amazon price alert \n\n {message}:\n {URL}".encode("utf-8"))
+
