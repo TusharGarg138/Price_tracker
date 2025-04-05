@@ -10,3 +10,13 @@ from dotenv import load_dotenv
 URL = "https://appbrewery.github.io/instant_pot/"
 live_url = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
 
+# ====================== Add Headers to the Request ===========================
+#header = {
+#     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+#      "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
+# }
+
+response  = requests.get(URL)
+data = response.text
+#print(data)
+
